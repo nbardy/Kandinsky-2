@@ -8,14 +8,14 @@ import re
 import os
 
 import torch
-import sys, time
+import sys
+import time
 from torch.utils.data import Dataset, DataLoader
 import pytorch_lightning as pl
 from copy import deepcopy
 
 from transformers import AutoTokenizer
-from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
-from tqdm import tqdm
+from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize from tqdm import tqdm
 from random import randint
 
 try:
@@ -126,9 +126,6 @@ def create_loader(batch_size, num_workers, shuffle=False, **dataset_params):
     dataset = TextImageDataset(**dataset_params)
     return DataLoader(
         dataset,
-        batch_size=batch_size,
-        num_workers=num_workers,
-        shuffle=shuffle,
         pin_memory=True,
     )
 
