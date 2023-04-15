@@ -8,7 +8,7 @@ import os
 from argparse import ArgumentParser
 import pytorch_lightning as pl
 
-from kandinsky2.train_utils.data.dataset_unclip_2_1 import create_loader
+# from kandinsky2.train_utils.data.dataset_unclip_2_1 import create_loader
 import kandinsky2.train_utils.data.dataset_unclip_aspect as data_aspect
 from kandinsky2.train_utils.utils import freeze_decoder
 
