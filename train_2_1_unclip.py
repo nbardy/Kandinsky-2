@@ -452,7 +452,7 @@ def main():
                  lr_scheduler=lr_scheduler, schedule_sampler=schedule_sampler,
                  train_loader=train_loader, val_loader=None, scale=config['image_enc_params']['scale'],
                  num_epochs=config['num_epochs'], save_every=config['save_every'], save_name=config['save_name'],
-                 save_path=config['save_path'],  inpainting=config['inpainting'], device=device)
+                 save_path=config['save_path'],  inpainting=config['inpainting'], device=device, args=args)
 
 
 if __name__ == '__main__':

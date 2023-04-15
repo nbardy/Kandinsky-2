@@ -1,3 +1,6 @@
+# Training Kandinsky
+This is a training fork of kandinsky that setups up training aspect ratio
+
 # Kandinsky 2.1
 
 [![Framework: PyTorch](https://img.shields.io/badge/Framework-PyTorch-orange.svg)](https://pytorch.org/) [![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/sberbank-ai/Kandinsky_2.1)

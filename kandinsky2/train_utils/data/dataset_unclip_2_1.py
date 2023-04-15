@@ -101,6 +101,7 @@ class TextImageDataset(Dataset):
             text = ""
         else:
             text = self.df["caption"].iloc[ind]
+
         text_encoding = self.tokenizer(
             text,
             max_length=self.seq_len,
@@ -126,6 +127,9 @@ def create_loader(batch_size, num_workers, shuffle=False, **dataset_params):
     dataset = TextImageDataset(**dataset_params)
     return DataLoader(
         dataset,
+        batch_size=batch_size,
+        num_workers=num_workers,
+        shuffle=shuffle,
         pin_memory=True,
     )
 

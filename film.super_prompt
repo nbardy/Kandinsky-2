@@ -1,0 +1,23 @@
+(let [people-count -> "How many people are in the image, answer zero if none?" i
+      person -> "What does the character look like in this image, describe their gender, expression, pose, position(left,right,center), hair color, clothing, and any key artistic details, Character Description:"
+      non-person -> "What is the subject of this film scene?"
+      people -> "Describe the main people in this film scene and their interaction, Description:"
+      color-grade -> "Describe the color grade of this film scene in simple words, Description:"
+      category -> "Is this scene focused around action, emotion, or artistic?, Choose One: "
+      emotion -> "Describe the emotional content of this scene"]
+  (let [subject (cond
+                  (= people-count 0) non-person
+                  (= people-count 1) person
+                  (> people-count 1) people)
+        details (let [more-details -> (case category
+                                        "action" "What is the focus of this action scene?"
+                                        "emotion" "What emotional content does the scene convey?"
+                                        "artistic" "What is the artistic focus of the scene?")
+                      result -> (str "Given the scene is a " subject " type scene\nGiven this question and answer " more-details ":full\n What is the best caption for this image?")]
+                  result)
+        person-count-string (cond
+                              (= people-count 0) "No people"
+                              (= people-count 1) "one person"
+                              (> people-count 1) (str people-count " people"))]
+    (str person-count-string " " subject " " details)))
+

@@ -1,0 +1,38 @@
+start: expr
+
+expr: sexp
+    | math_expr
+    | prompt_expr
+    | cond_expr
+    | case_expr
+    | str_expr
+
+sexp: "(" expr* ")"
+
+math_expr: expr "+" expr  -> add
+          | expr "-" expr  -> sub
+          | expr "*" expr  -> mul
+          | expr "/" expr  -> div
+          | expr "=" expr  -> eq
+          | expr ">" expr  -> gt
+          | expr "<" expr  -> lt
+
+prompt_expr: "let" "[" let_bindings "]" expr        -> let
+           | "[" SNAME "->" "prompt" "]"           -> prompt_gen
+
+cond_expr: "cond" sexp (expr expr)+                -> cond
+
+case_expr: "case" expr sexp (expr expr)+           -> case
+
+str_expr: "str" STRING                             -> str
+        | "str" INTERPOLATED_STRING                -> interpolated_str
+
+let_bindings: (SNAME expr)+
+
+STRING: /"[^"]*"/
+INTERPOLATED_STRING: /\{[^}]*\}/
+SNAME: /[a-zA-Z\-_0-9:\p{Emoji_Presentation}]+/u
+NUMBER: /\d+/
+
+%import common.WS
+%ignore WS
