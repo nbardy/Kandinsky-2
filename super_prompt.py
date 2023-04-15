@@ -30,6 +30,7 @@ def eval_str(item, env):
     # text = item.children[0].value
     text = "a"
     llm_response = send_to_llm(text)
+    print("Querying the LLM, response: ", llm_response)
     return llm_response
 
 
@@ -42,15 +43,10 @@ def eval_ast(expr, env):
     elif expr.data == 'val':
         return eval_val(expr, env)
     elif expr.data == 'string':
-        print("strring", expr)
         return eval_str(expr, env)
-    elif expr.data == 'let_form':
-        return eval_let_form(expr, env)
-    elif expr.data == 'str_form':
-        return eval_str_form(expr, env)
     elif expr.data == 'sexp':
         wrapped_expr = expr.children[0]
-        return eval_ast(wrapped_expr, env)
+        return eval_sexpr(wrapped_expr, env)
     else:
         raise ValueError(f'Unknown expression: {expr}')
 
@@ -245,6 +241,8 @@ eval_functions = {
     'question_form': eval_question_form,
     'cond_form': eval_cond_form,
     'case_form': eval_case_form,
+    'let_form': eval_let,
+    'str_form': eval_str_form,
 }
 
 
