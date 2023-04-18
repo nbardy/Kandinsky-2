@@ -8,7 +8,6 @@ import os
 from argparse import ArgumentParser
 import pytorch_lightning as pl
 
-from kandinsky2.train_utils.data.dataset_unclip_2_1 import create_loader
 import kandinsky2.train_utils.data.dataset_unclip_aspect as data_aspect
 from kandinsky2.train_utils.utils import freeze_decoder
 
@@ -20,15 +19,8 @@ from kandinsky2.model.resample import UniformSampler
 from omegaconf import OmegaConf
 import clip
 
-parser = argparse.ArgumentParser(
-    description="Simple example of a training script.")
-parser.add_argument(
-    "--pretrained_model_name_or_path",
-    type=str,
-    default=None,
-    required=True,
-    help="Path to pretrained model or model identifier from huggingface.co/models.",
-)
+parser = argparse.ArgumentParser( description="Simple example of a training script.")
+
 parser.add_argument(
     "--revision",
     type=str,
